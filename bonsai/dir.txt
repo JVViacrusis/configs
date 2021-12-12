@@ -1,0 +1,7 @@
+This one is special,
+
+This bash script has the colours built-in, and has no separate config file.
+So, this is the whole script, colours included.
+
+feel free to put it in any bin folder
+e.g. ~/bin/bonsai
