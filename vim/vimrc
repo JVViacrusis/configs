@@ -6,7 +6,7 @@
 " ---------------------------------
 
 " keep cursor centered "
-" set scrolloff=999 didn't EOF well enough "
+" set scrolloff=999 didn't handle EOF well enough "
 nnoremap j jzz
 nnoremap k kzz
 
