@@ -54,11 +54,12 @@ command! -nargs=0 W w !sudo tee % > /dev/null
 " -----------
 
 
+
 " -------------
 " -- Plugins --
 " -------------
 
-call plug#begin('/etc/vim/vimrc')
+call plug#begin()
 
 " vim-commentary: gc to comment lines
 Plug 'tpope/vim-commentary'
@@ -68,3 +69,15 @@ call plug#end()
 " -------------
 " -------------
 " -------------
+
+
+" -------------------- 
+" -- Vim-Commentary --
+" -------------------- 
+
+" change C comments to single line format
+autocmd FileType c setlocal commentstring=//\ %s
+
+" -------------------- 
+" -------------------- 
+" -------------------- 
