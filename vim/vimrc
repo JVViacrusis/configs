@@ -5,16 +5,47 @@
 " -- Navigation & Editor Visuals --
 " ---------------------------------
 
+" apply zenburn theme
+colors zenburn
+
 " keep cursor centered "
 " set scrolloff=999 didn't handle EOF well enough "
 nnoremap j jzz
 nnoremap k kzz
+
+" set ctrl+l to move screen to the right then center cursor"
+nnoremap <C-l> zLgm
+
+" set ctrl+h to move screen to the left then center cursor"
+nnoremap <C-h> zHgm
 
 " relative line numbers "
 set relativenumber
 
 " show current line's line number
 set number
+
+" set tab to 4 spaces
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" have code folding views saved and loaded automatically "
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent loadview
+augroup END
+
+" disable line wrapping "
+set nowrap
+
+" adds a character at the end of the line if text extends past screen "
+:set listchars+=precedes:<,extends:>
+
+" makes vim use the same clipboard as system instead of having it's own "
+set clipboard=unnamedplus
 
 " ---------------------------------
 " ---------------------------------
@@ -38,6 +69,7 @@ map <F8> :w <CR> :!clear && gcc % -o %< && ./%< <CR>
 " ---------------
 
 
+
 " -----------
 " -- Misc. --
 " -----------
@@ -48,6 +80,9 @@ map <F8> :w <CR> :!clear && gcc % -o %< && ./%< <CR>
 " - no more worrying about making edits and realizing you forgot to sudo
 " - hassle free way to keep ability to edit elevated files with plugins
 command! -nargs=0 W w !sudo tee % > /dev/null
+
+" set code folding mode to indent "
+set foldmethod=indent
 
 " -----------
 " -----------
@@ -63,6 +98,21 @@ call plug#begin()
 
 " vim-commentary: gc to comment lines
 Plug 'tpope/vim-commentary'
+
+" vim-airline: pretty status line
+Plug 'vim-airline/vim-airline'
+
+" vim-airline-themes: themes for vim-airline
+Plug 'vim-airline/vim-airline-themes'
+
+" rainbow_parentheses.vim: visualization of parentheses levels "
+Plug 'junegunn/rainbow_parentheses.vim'
+
+" c.vim: c coding plugin "
+Plug 'vim-scripts/c.vim'
+
+" vim-surround: surround selections with characters "
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -81,3 +131,57 @@ autocmd FileType c setlocal commentstring=//\ %s
 " -------------------- 
 " -------------------- 
 " -------------------- 
+
+" ------------------ 
+" -- Vim-Surround --
+" ------------------ 
+
+" changes folding root bind to be more accessible "
+map f z
+
+" swaps bindings of fold all and fold some "
+nnoremap za zAzz
+nnoremap zA zazz
+
+" ------------------ 
+" ------------------ 
+" ------------------ 
+
+
+" ------------------
+" -- Vim-Airline* --
+" ------------------
+
+" sets theme for vim-airline
+let g:airline_theme='angr'
+
+" ------------------
+" ------------------
+" ------------------
+
+
+
+" -----------------------------
+" -- rainbow_parentheses.vim --
+" -----------------------------
+
+" activate based on file type
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType * RainbowParentheses
+augroup END
+
+" sets max level
+let g:rainbow#max_level = 16
+
+" sets pairs
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+" backlisted colors
+let g:rainbow#blacklist = [108, 253, 249]
+
+" -----------------------------
+" -----------------------------
+" -----------------------------
+
+
