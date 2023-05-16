@@ -1,1 +1,11 @@
 ~/
+
+
+
+add this to ~/.bashrc:
+
+#personal .bashrc file
+if [ -f ~/.jvbashrc ]; then
+	. ~/.jvbashrc
+fi
+
