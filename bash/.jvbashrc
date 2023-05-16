@@ -1,0 +1,84 @@
+################
+# run neofetch #
+################
+
+neofetch
+
+################
+################
+################
+
+
+###########
+# aliases #
+###########
+
+# back dir
+alias u="cd ../"
+alias uu="cd ../../"
+alias uuu="cd ../../../"
+alias uuuu="cd ../../../../"
+alias uuuuu="cd ../../../../../"
+
+# dir bookmarks
+alias java="cd /home/justin/personal/bcit/term2/comp2522-object-oriented-programming-1/intellij-workspace"
+alias ccc="cd /home/justin/personal/bcit/term2/comp2510-procedural-programming/"
+alias clab="cd /home/justin/personal/bcit/term2/comp2510-procedural-programming/labs-assignments/assignment03/"
+alias comms="cd /home/justin/personal/bcit/term2/comm2216-business-communications-2/"
+alias d="sudo docker"
+alias dco="sudo docker-compose"
+
+# ansible
+alias ap="ansible-playbook"
+alias av="ansible-vault"
+
+
+# executes the last command as sudo
+alias please='sudo "$BASH" -c "$(history -p !!)"'
+
+# copies working directory to clipboard
+alias cwd='pwd | xclip -sel clip'
+
+# misc
+alias py='python3'
+
+###########
+###########
+###########
+
+
+
+#############
+# functions #
+#############
+
+# makes a directory then changes wd to it
+mcd () {
+  mkdir "$1"
+  cd "$1"
+}
+
+#############
+#############
+#############
+
+
+
+##################
+# PATH additions #
+##################
+
+# justin bin
+# export PATH="/home/justin/bin/:$PATH"
+
+##################
+##################
+##################
+
+###########################
+# Specific to yoga laptop #
+###########################
+
+###########################
+###########################
+###########################
