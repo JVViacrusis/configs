@@ -8,11 +8,6 @@
 " apply zenburn theme
 colors zenburn
 
-" keep cursor centered "
-" set scrolloff=999 didn't handle EOF well enough "
-nnoremap j jzz
-nnoremap k kzz
-
 " set ctrl+l to move screen to the right then center cursor"
 nnoremap <C-l> zLgm
 
@@ -42,10 +37,41 @@ augroup END
 set nowrap
 
 " adds a character at the end of the line if text extends past screen "
-:set listchars+=precedes:<,extends:>
+set listchars+=precedes:<,extends:>
 
 " makes vim use the same clipboard as system instead of having it's own "
 set clipboard=unnamedplus
+
+" substiution will replace all occurances in line by default, not just first "
+set gdefault
+
+" highlights searches as you type "
+set incsearch
+
+" highlights all search results instead of just first "
+set hlsearch
+
+" n (next result) and N (prev result) now also center the screen "
+nnoremap n nzz
+nnoremap N Nzz
+
+" basic movements will deactivate search highlighting "
+" 'j|k zz' keeps cursor centered "
+" set scrolloff=999 didn't handle EOF well enough "
+nmap <silent> h h:noh<CR>
+nmap <silent> j jzz:noh<CR>
+nmap <silent> k kzz:noh<CR>
+nmap <silent> l l:noh<CR>
+nmap <silent> b b:noh<CR>
+nmap <silent> w w:noh<CR>
+
+" adds keys that wrap to next line when moving "
+set whichwrap+=<,> " normal/visual mode cursor keys "
+set whichwrap+=[,] " insert mode cursor keys "
+set whichwrap+=h,l " basic horiontal movement keys "
+
+" removes characters that wrap to next line when moving "
+set whichwrap-=b,w " back and forward word keys "
 
 " ---------------------------------
 " ---------------------------------
@@ -67,6 +93,23 @@ map <F8> :w <CR> :!clear && gcc % -o %< && ./%< <CR>
 " ---------------
 " ---------------
 " ---------------
+
+
+
+" --------------------
+" -- Python Configs --
+" --------------------
+
+" TODO: have these python configs only activate when vim detects a .c file
+" I'm keeping it global for now to see if it's even necessary to do that.
+
+" run python3 with f4 "
+" dumb rn. TODO: ability to add all kinds of cl args (dirs visually, ints, strings)"
+map <F4> :w <CR> :!clear && python3 ./% <CR>
+
+" --------------------
+" --------------------
+" --------------------
 
 
 
