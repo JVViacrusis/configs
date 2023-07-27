@@ -1,0 +1,12 @@
+speed: 275
+buttons: f g d
+drag: r
+decelerator: s
+accelerator: a
+scroll_up: ,
+scroll_down: m
+
+hint_activation_key: C-j
+activation_key: C-k
+
+cursor_color: #00cc00
