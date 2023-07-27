@@ -58,12 +58,20 @@ nnoremap N Nzz
 " basic movements will deactivate search highlighting "
 " 'j|k zz' keeps cursor centered "
 " set scrolloff=999 didn't handle EOF well enough "
+"nmap => normal mode, xmap=> visual/select mode"
 nmap <silent> h h:noh<CR>
 nmap <silent> j jzz:noh<CR>
 nmap <silent> k kzz:noh<CR>
 nmap <silent> l l:noh<CR>
 nmap <silent> b b:noh<CR>
 nmap <silent> w w:noh<CR>
+
+xmap <silent> h h
+xmap <silent> j jzz
+xmap <silent> k kzz
+xmap <silent> l l
+xmap <silent> b b
+xmap <silent> w w
 
 " adds keys that wrap to next line when moving "
 set whichwrap+=<,> " normal/visual mode cursor keys "
@@ -106,6 +114,9 @@ map <F8> :w <CR> :!clear && gcc % -o %< && ./%< <CR>
 " run python3 with f4 "
 " dumb rn. TODO: ability to add all kinds of cl args (dirs visually, ints, strings)"
 map <F4> :w <CR> :!clear && python3 ./% <CR>
+
+" like above but no save "
+map <F3> :!clear && python3 ./% <CR>
 
 " --------------------
 " --------------------
